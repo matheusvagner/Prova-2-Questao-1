@@ -3,6 +3,19 @@
 
 using namespace std;
 
+int transformador(char *palavra, char *palavra_codificada, char letra, char nova_letra, int tamanho){
+  int trocas = 0;
+  for (int i = 0; i < tamanho; i++){
+    if (palavra[i] == letra){
+      palavra_codificada[i] = nova_letra;
+      trocas++;
+    }else{
+      palavra_codificada[i] = palavra[i];
+    }
+  }
+  return trocas;
+}
+
 int main() {
   string mensagem, nova_mensagem; 
   int trocas, tamanho;
@@ -18,25 +31,20 @@ int main() {
 
   for (int i = 0; i < tamanho; i++){
     vet_char[i] = mensagem[i];
+    cout << vet_char[i];
   }
 
+  cout << endl;
   
   ponteiro = &vet_char[0];
   ponteiro_novo = &vet_novo[0];
 
+  trocas = transformador(ponteiro, ponteiro_novo, letra, nova_letra, tamanho);
 
   for (int i = 0; i < tamanho; i++){
-    if (ponteiro[i] == letra){
-      ponteiro_novo[i] = nova_letra;
-    }else{
-      ponteiro_novo[i] = ponteiro[i];
-    }
-    cout << ponteiro_novo[i];
-    
+    cout << vet_novo[i];
   }
-
-
   
-
+  cout << endl << trocas << endl;
 
 }
