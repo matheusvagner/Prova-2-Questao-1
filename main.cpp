@@ -6,7 +6,15 @@ using namespace std;
 int main() {
   string mensagem, nova_mensagem; 
   int trocas, tamanho;
-  char letra, nova_letra, *ponteiro= NULL, *ponteiro_novo = NULL, vet_char[tamanho], vet_novo[tamanho];
+  char letra, nova_letra, *ponteiro= NULL, *ponteiro_novo = NULL;
+
+  cin >> mensagem;
+  cin >> letra;
+  cin >> nova_letra;
+
+  tamanho = mensagem.length();
+
+  char  vet_char[tamanho], vet_novo[tamanho];
 
   for (int i = 0; i < tamanho; i++){
     vet_char[i] = mensagem[i];
