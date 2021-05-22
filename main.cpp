@@ -6,7 +6,7 @@ using namespace std;
 int transformador(char *palavra, char *palavra_codificada, char letra, char nova_letra, int tamanho){
   int trocas = 0;
   for (int i = 0; i < tamanho; i++){
-    if (palavra[i] == letra){
+    if ((palavra[i] == letra) || (palavra[i] == toupper(letra))){
       palavra_codificada[i] = nova_letra;
       trocas++;
     }else{
@@ -21,6 +21,8 @@ int main() {
   int trocas, tamanho;
   char letra, nova_letra, *ponteiro= NULL, *ponteiro_novo = NULL;
 
+  cout << "Digite a mensagem que quer trocar seus caracteres, o caracter a ser substituido, e o caracter substituto" << endl;
+  cout << "INPUT:" << endl;
   cin >> mensagem;
   cin >> letra;
   cin >> nova_letra;
@@ -31,7 +33,6 @@ int main() {
 
   for (int i = 0; i < tamanho; i++){
     vet_char[i] = mensagem[i];
-    cout << vet_char[i];
   }
 
   cout << endl;
@@ -41,10 +42,14 @@ int main() {
 
   trocas = transformador(ponteiro, ponteiro_novo, letra, nova_letra, tamanho);
 
+  cout << "OUTPUT:" << endl;
+
+  cout << mensagem << endl;
+
   for (int i = 0; i < tamanho; i++){
     cout << vet_novo[i];
   }
   
   cout << endl << trocas << endl;
-
+  return 0;
 }
