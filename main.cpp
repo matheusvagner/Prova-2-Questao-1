@@ -3,11 +3,12 @@
 
 using namespace std;
 
-int transformador(char *palavra, char *palavra_codificada, char letra, char nova_letra, int tamanho){
+// Função responsável por trocar as caracters, e retorna o numero de trocas feitas.
+int transformador(char *palavra, char *palavra_codificada, char caracter, char novo_caracter, int tamanho){
   int trocas = 0;
   for (int i = 0; i < tamanho; i++){
-    if ((palavra[i] == letra) || (palavra[i] == toupper(letra))){
-      palavra_codificada[i] = nova_letra;
+    if ((palavra[i] == caracter) || (palavra[i] == toupper(caracter))){
+      palavra_codificada[i] = novo_caracter;
       trocas++;
     }else{
       palavra_codificada[i] = palavra[i];
@@ -17,32 +18,39 @@ int transformador(char *palavra, char *palavra_codificada, char letra, char nova
 }
 
 int main() {
-  string mensagem, nova_mensagem; 
+  // Variáveis
+  string mensagem; 
   int trocas, tamanho, controlador = 1;
-  char letra, nova_letra, *ponteiro= NULL, *ponteiro_novo = NULL;
+  char caracter, novo_caracter, *ponteiro= NULL, *ponteiro_novo = NULL;
 
+  // Main Loop
   while (controlador == 1){
+    //Input do usuário
     cout << "Digite a mensagem que quer trocar seus caracteres, o caracter a ser substituido, e o caracter substituto" << endl;
     cout << "INPUT:" << endl;
     cin >> mensagem;
-    cin >> letra;
-    cin >> nova_letra;
+    cin >> caracter;
+    cin >> novo_caracter;
 
     tamanho = mensagem.length();
 
     char  vet_char[tamanho], vet_novo[tamanho];
 
+    //Transforma a string em um vetor char
     for (int i = 0; i < tamanho; i++){
       vet_char[i] = mensagem[i];
     }
 
     cout << endl;
     
+    //Associando os ponteiros
     ponteiro = &vet_char[0];
     ponteiro_novo = &vet_novo[0];
 
-    trocas = transformador(ponteiro, ponteiro_novo, letra, nova_letra, tamanho);
+    //Chama a função
+    trocas = transformador(ponteiro, ponteiro_novo, caracter, novo_caracter, tamanho);
 
+    //Output do código
     cout << "OUTPUT:" << endl;
 
     cout << mensagem << endl;
@@ -53,9 +61,11 @@ int main() {
     
     cout << endl << trocas << endl;
 
-    cout << "Deseja continuar? 1 para sim, 0 para não" <<endl;
+    cout << "\nDeseja continuar? 1 para sim, 0 para não" <<endl;
     cin >> controlador;
 
+    //Limpa a tela
+    cout << "\033[2J\033[1;1H";
   }
   return 0;
 }
